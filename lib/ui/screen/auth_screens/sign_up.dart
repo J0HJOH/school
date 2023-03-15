@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:school/ui/screen/log_in.dart';
+import 'package:school/ui/screen/auth_screens/log_in.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../constants/colors.dart';
-import '../widgets/buttons.dart';
-import '../widgets/text_input_box.dart';
+import '../../../constants/colors.dart';
+import '../../widgets/buttons.dart';
+import '../../widgets/text_input_box.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

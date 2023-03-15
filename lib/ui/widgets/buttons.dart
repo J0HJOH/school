@@ -25,7 +25,7 @@ class _MyButtonsState extends State<MyButtons> {
             widget.btnPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: widget.btnColor,
-          elevation: 20,
+          elevation: 30,
         ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
