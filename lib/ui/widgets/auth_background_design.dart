@@ -22,7 +22,7 @@ class _AuthBackgroundState extends State<AuthBackground> {
       decoration: BoxDecoration(
         image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage('tree.jpg')),
+            image: AssetImage('assets/tree.jpg')),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,

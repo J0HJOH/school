@@ -50,156 +50,158 @@ class _AuthDetailPageState extends State<AuthDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-              child: Text(
-                  'Login',
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 25.sp
-                ),
-              )
-          ),
-          SizedBox(height: 2.h,),
-
-          Text(
-            'Email',
-            style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
-                fontSize: 16
-            ),
-          ),
-
-          SizedBox(height: 1.h,),
-
-          Container(
-            height: 6.h,
-            width: 90.w,
-            color: Color(0xFFD9D9D9),
-            padding: EdgeInsets.only(left: 20),
-            child: TextInputBox(
-                textController: userEmail,
-                hintText: 'abcd@gmail.com',
-                visible: true,
-                inputType: TextInputType.emailAddress,
-                suffixIcon: null
-            ),
-          ),
-
-          SizedBox(height: 2.h,),
-
-          Text(
-            'Password',
-            style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
-                fontSize: 16
-            ),
-          ),
-
-          SizedBox(height: 1.h,),
-
-          Container(
-            height: 6.h,
-            width: 90.w,
-            color: Color(0xFFD9D9D9),
-            padding: EdgeInsets.only(left: 20),
-            child: TextInputBox(
-                textController: userPassword,
-                hintText: '*******',
-                visible: isVisible,
-                inputType: TextInputType.text,
-                suffixIcon: isVisible ? IconButton(
-                  onPressed: () {
-                    setState(() {
-                      isVisible = false;
-                    });
-                  },
-                  icon: Icon(Icons.visibility),
-                ) : IconButton(
-                    onPressed: () {
-                      setState(() {
-                        isVisible = true;
-                      });
-                    },
-                    icon: Icon(Icons.visibility_off)
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+                child: Text(
+                    'Login',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 25.sp
+                  ),
                 )
             ),
-          ),
+            SizedBox(height: 2.h,),
 
-          SizedBox(height: 2.h,),
+            Text(
+              'Email',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16
+              ),
+            ),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Checkbox(
-                    value: isChecked,
-                    onChanged: (value){
-                      isChecked = !isChecked;
+            SizedBox(height: 1.h,),
+
+            Container(
+              height: 6.h,
+              width: 90.w,
+              color: Color(0xFFD9D9D9),
+              padding: EdgeInsets.only(left: 20),
+              child: TextInputBox(
+                  textController: userEmail,
+                  hintText: 'abcd@gmail.com',
+                  visible: true,
+                  inputType: TextInputType.emailAddress,
+                  suffixIcon: null
+              ),
+            ),
+
+            SizedBox(height: 2.h,),
+
+            Text(
+              'Password',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16
+              ),
+            ),
+
+            SizedBox(height: 1.h,),
+
+            Container(
+              height: 6.h,
+              width: 90.w,
+              color: Color(0xFFD9D9D9),
+              padding: EdgeInsets.only(left: 20),
+              child: TextInputBox(
+                  textController: userPassword,
+                  hintText: '*******',
+                  visible: isVisible,
+                  inputType: TextInputType.text,
+                  suffixIcon: isVisible ? IconButton(
+                    onPressed: () {
                       setState(() {
+                        isVisible = false;
                       });
                     },
-                  ),
+                    icon: Icon(Icons.visibility),
+                  ) : IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isVisible = true;
+                        });
+                      },
+                      icon: Icon(Icons.visibility_off)
+                  )
+              ),
+            ),
 
-                  SizedBox(width: 2.w,),
+            SizedBox(height: 2.h,),
 
-                  Text(
-                    'Remember me',
-                    style: TextStyle(
-                        color: Colors.black,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Checkbox(
+                      value: isChecked,
+                      onChanged: (value){
+                        isChecked = !isChecked;
+                        setState(() {
+                        });
+                      },
+                    ),
+
+                    SizedBox(width: 2.w,),
+
+                    Text(
+                      'Remember me',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16
+                      ),
+                    ),
+                  ],
+                ),
+
+                TextButton(
+                    onPressed: (){
+                      Navigator.pushReplacement(
+                          context, MaterialPageRoute(
+                          builder: (context) => ForgotPassword())
+                      );
+                    },
+                    child: Text(
+                        'Forgot Password?',
+                      style: TextStyle(
+                        decoration:   TextDecoration.underline,
                         fontWeight: FontWeight.w400,
                         fontSize: 16
-                    ),
-                  ),
-                ],
-              ),
+                      ),
+                    )
+                )
+              ],
+            ),
 
-              TextButton(
-                  onPressed: (){
+            SizedBox(height: 8.h,),
+
+            Container(
+              width: 90.w,
+              height: 6.h,
+              child: MyButtons(
+                  btnText: 'Login',
+                  btnColor: newGreen,
+                  txtColor: Colors.white,
+                  btnPressed: () {
+                    login();
                     Navigator.pushReplacement(
                         context, MaterialPageRoute(
-                        builder: (context) => ForgotPassword())
+                        builder: (context) => HomeScreen())
                     );
-                  },
-                  child: Text(
-                      'Forgot Password?',
-                    style: TextStyle(
-                      decoration:   TextDecoration.underline,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16
-                    ),
-                  )
-              )
-            ],
-          ),
-
-          SizedBox(height: 8.h,),
-
-          Container(
-            width: 90.w,
-            height: 6.h,
-            child: MyButtons(
-                btnText: 'Login',
-                btnColor: newGreen,
-                txtColor: Colors.white,
-                btnPressed: () {
-                  login();
-                  Navigator.pushReplacement(
-                      context, MaterialPageRoute(
-                      builder: (context) => HomeScreen())
-                  );
-                }
+                  }
+              ),
             ),
-          ),
 
-        ],
+          ],
+        ),
       ),
     );
   }

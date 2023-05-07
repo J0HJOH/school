@@ -5,7 +5,7 @@ import 'package:school/ui/screen/auth_screens/first_screen.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {
-  runApp(DevicePreview(builder: (context) => const MyApp()));
+  runApp( const MyApp());
 }
 
 class MyApp extends StatelessWidget {
